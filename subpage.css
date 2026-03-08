@@ -164,8 +164,14 @@
 }
 
 .accordion-item.active .accordion-content {
-    max-height: 2000px;
+    max-height: none; /* Entferne das feste Limit von 2000px */
     padding: 1rem 2rem 2.5rem;
+    overflow: visible; /* Ganz wichtig für die Schussverletzungen! */
+}
+
+/* Optional: Damit man sieht, dass es scrollbar ist, falls die Seite sehr lang wird */
+body {
+    overflow-y: auto;
 }
 
 /* --- Nested Sub-accordion --- */
@@ -225,4 +231,5 @@
     .info-section {
         margin: 4rem auto;
     }
+
 }
