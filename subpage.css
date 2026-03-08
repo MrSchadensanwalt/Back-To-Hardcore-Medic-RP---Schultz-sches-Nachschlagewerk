@@ -119,7 +119,6 @@
     max-width: 900px;
     margin: 4rem auto 8rem;
     padding: 0 1.5rem;
-    display: block; /* Stellt sicher, dass Container im Fluss bleibt */
 }
 
 .accordion-item {
@@ -128,8 +127,6 @@
     margin-bottom: 1rem;
     border-radius: 4px;
     transition: var(--transition);
-    display: block; /* Wichtig, damit sie untereinander rutschen */
-    position: relative;
 }
 
 .accordion-item:hover {
@@ -158,20 +155,17 @@
     opacity: 1;
 }
 
-/* --- Accordion Content Bereich --- */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0 2rem;
     background-color: rgba(26, 24, 20, 0.5);
 }
 
-/* Wenn aktiv: Wir nutzen einen sehr hohen Pixelwert, damit alles (auch Untermenüs) reinpasst */
 .accordion-item.active .accordion-content {
-    max-height: 4000px; 
+    max-height: 2000px;
     padding: 1rem 2rem 2.5rem;
-    overflow: visible; /* Wichtig, damit das Untermenü nicht abgeschnitten wird */
 }
 
 /* --- Nested Sub-accordion --- */
@@ -179,7 +173,6 @@
     margin-top: 1rem;
     border-left: 2px solid var(--clr-divider);
     padding-left: 1.5rem;
-    display: block;
 }
 
 .sub-accordion-header {
@@ -196,14 +189,13 @@
 .sub-accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
+    transition: max-height 0.3s ease;
     color: var(--clr-text-muted);
     font-size: 1rem;
 }
 
-/* Wenn Untermenü aktiv ist */
 .sub-accordion-item.active .sub-accordion-content {
-    max-height: 1500px;
+    max-height: 500px;
     padding-top: 0.5rem;
 }
 
@@ -234,14 +226,3 @@
         margin: 4rem auto;
     }
 }
-
-/* Standard Scrolling für die gesamte Seite aktivieren */
-html, body {
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-}
-
-
