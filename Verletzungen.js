@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         header.addEventListener("click", () => {
             const isActive = item.classList.contains("active");
 
+            // Andere schließen
             items.forEach(i => {
                 i.classList.remove("active");
                 i.querySelector(".accordion-content").style.maxHeight = null;
@@ -15,23 +16,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if(!isActive){
                 item.classList.add("active");
+                // Wir setzen die Höhe auf scrollHeight, damit die Animation funktioniert
                 content.style.maxHeight = content.scrollHeight + "px";
+                
+                // WICHTIG: Nach der Animation auf 'initial' setzen, 
+                // damit Untermenüs den Platz erweitern können
+                setTimeout(() => {
+                    if(item.classList.contains("active")) {
+                        content.style.maxHeight = "none";
+                    }
+                }, 400); 
             }
         });
     });
 
-    // Sub-Accordion
+    // Sub-Accordion (Schussverletzungsarten)
     const subItems = document.querySelectorAll(".sub-accordion-item");
     subItems.forEach(sub => {
         const subHeader = sub.querySelector(".sub-accordion-header");
         const subContent = sub.querySelector(".sub-accordion-content");
 
         subHeader.addEventListener("click", (e) => {
-            e.stopPropagation(); // verhindert, dass Haupt-Accordion geschlossen wird
+            e.stopPropagation(); 
             const isActive = sub.classList.contains("active");
-
-            // Schließe andere Sub-Accordions im selben Haupt-Accordion
             const parentContent = sub.closest(".accordion-content");
+
+            // Andere Subs schließen
             const siblings = parentContent.querySelectorAll(".sub-accordion-item");
             siblings.forEach(s => {
                 s.classList.remove("active");
