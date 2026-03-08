@@ -174,7 +174,7 @@ h1, h2, h3, h4 {
 }
 
 /* Static images in background - refined */
-.panels-wrapper::before,
+.panels-wrapper: url('images/Operation.png'), url('images/Labor.png');:before,
 .panels-wrapper::after {
     content: '';
     position: absolute;
@@ -337,3 +337,4 @@ h1, h2, h3, h4 {
         padding: 3rem 1.5rem;
     }
 }
+
