@@ -1,6 +1,4 @@
-/* ============================
-   SUB-HERO BEREICH
-   ============================ */
+
 .sub-hero-container {
     position: relative;
     width: 100%;
@@ -28,9 +26,7 @@
     font-weight: bold;
 }
 
-/* ============================
-   INFORMATION SECTION
-   ============================ */
+
 .info-section {
     text-align: center;
     margin: 100px 0;
@@ -60,9 +56,7 @@
     font-family: 'italic', serif;
 }
 
-/* ============================
-   STRICHE
-   ============================ */
+
 .sub-divider {
     width: 70%;
     height: 0.2px;
@@ -90,9 +84,7 @@
     margin: 0;
 }
 
-/* ============================
-   NAVIGATION
-   ============================ */
+
 .sub-nav {
     display: flex;
     justify-content: center;
@@ -110,9 +102,7 @@
     color: white;
 }
 
-/* ============================
-   TITEL UND UNTERTITEL
-   ============================ */
+
 .main-page-title {
     text-align: center;
     font-size: 150px;
@@ -129,9 +119,7 @@
     padding-bottom: 50px;
 }
 
-/* ============================
-   HAUPT-ACCORDION
-   ============================ */
+
 .accordion-container {
     width: 70%;
     margin: 50px auto;
@@ -185,9 +173,7 @@
     transform: rotate(45deg);
 }
 
-/* ============================
-   SUB-ACCORDION
-   ============================ */
+
 .sub-accordion-item {
     background: rgba(230,220,198,0.05);
     border: 1px solid #e6dcc6;
@@ -231,9 +217,7 @@
     transform: rotate(45deg);
 }
 
-/* ============================
-   BODY VERLETZUNGEN SPEZIFISCH
-   ============================ */
+
 body.Verletzungen .accordion-content,
 body.Verletzungen .sub-accordion-content {
     max-height: 0;
@@ -246,9 +230,7 @@ body.Verletzungen .sub-accordion-item.active .sub-accordion-content {
     padding: 20px;
 }
 
-/* ============================
-   RESPONSIVE STYLES
-   ============================ */
+
 @media (max-width: 768px) {
     .accordion-header { font-size: 1rem; padding: 12px; }
     .sub-accordion-header { font-size: 0.9rem; padding: 10px; }
@@ -264,4 +246,5 @@ body.Verletzungen .sub-accordion-item.active .sub-accordion-content {
     .info-title span { font-size: 28px; }
     .info-text { font-size: 20px; }
     .sub-title-text { font-size: 25px; }
+
 }
