@@ -155,18 +155,20 @@
     opacity: 1;
 }
 
+/* ÄNDERE DIESEN BLOCK: */
+.accordion-item.active .accordion-content {
+    max-height: max-content; /* WICHTIG: Kein fester Pixelwert wie 2000px! */
+    padding: 1rem 2rem 2.5rem;
+    overflow: visible; /* Erlaubt das Mitwachsen ohne Überlappen */
+}
+
+/* Stelle sicher, dass dieser Block auch so aussieht: */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.4s ease-in-out;
     padding: 0 2rem;
     background-color: rgba(26, 24, 20, 0.5);
-}
-
-.accordion-item.active .accordion-content {
-    max-height: none; /* Entferne das feste Limit von 2000px */
-    padding: 1rem 2rem 2.5rem;
-    overflow: visible; /* Ganz wichtig für die Schussverletzungen! */
 }
 
 /* Optional: Damit man sieht, dass es scrollbar ist, falls die Seite sehr lang wird */
@@ -233,3 +235,4 @@ body {
     }
 
 }
+
