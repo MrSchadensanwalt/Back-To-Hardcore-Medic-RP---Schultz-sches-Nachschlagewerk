@@ -1,6 +1,4 @@
-/* ============================
-   GRUNDSTYLES
-   ============================ */
+
 body {
     margin: 0;
     background-color: #121212;
@@ -8,7 +6,7 @@ body {
     color: #e6dcc6;
 }
 
-/* HERO BEREICH */
+
 .hero-container {
     position: relative;
     width: 100%;
@@ -48,7 +46,7 @@ body {
     font-style: italic;
 }
 
-/* STRICHE UND LINKS */
+
 .divider {
     width: 2500px;
     height: 0.2px;
@@ -74,7 +72,7 @@ body {
     color: #fff;
 }
 
-/* SUBHEADINGS */
+
 .subheading {
     font-size: 155px;
     color: #e6dcc6;
@@ -98,7 +96,7 @@ body {
     line-height: 1.5;
 }
 
-/* STRICHE MIT MITTELTEXT */
+
 .line-title-container {
     display: flex;
     align-items: center;
@@ -121,7 +119,7 @@ body {
     white-space: nowrap;
 }
 
-/* PANELS */
+
 .container {
     padding: 350px;
     display: flex;
@@ -150,7 +148,7 @@ body {
     transform: scale(1.05);
 }
 
-/* WRAPPER FÜR PANELS MIT HINTERGRUNDBILD */
+
 .panels-wrapper {
     position: relative;
     display: flex;
@@ -184,7 +182,7 @@ body {
     margin-top: 40px;
 }
 
-/* DISCLAIMER */
+
 .disclaimer-section {
     padding: 80px 500px;
     background-color: transparent;
@@ -243,7 +241,7 @@ body {
     margin-bottom: 0;
 }
 
-/* FOOTER */
+
 .footer-section {
     padding: 300px 500px 0 500px;
     color: #e6dcc6;
@@ -287,11 +285,7 @@ body {
     text-align: center;
 }
 
-/* ============================
-   RESPONSIVE STYLES
-   ============================ */
 
-/* Tablets & kleine Laptops */
 @media (max-width: 1024px) {
     .hero-text { font-size: 50px; padding: 0 10px; }
     .subheading { font-size: 100px; }
@@ -299,7 +293,7 @@ body {
     .top-link { font-size: 30px; }
 }
 
-/* Smartphones Hochformat & kleine Tablets */
+
 @media (max-width: 768px) {
     .hero-container { height: auto; }
     .hero { height: auto; }
@@ -310,11 +304,12 @@ body {
     .divider { width: 90%; }
 }
 
-/* Kleine Smartphones */
+
 @media (max-width: 480px) {
     .hero-text { font-size: 25px; padding: 0 5px; }
     .subheading { font-size: 45px; }
     .subtext { font-size: 18px; }
     .top-link { font-size: 16px; gap: 8px; }
     .divider { width: 85%; }
+
 }
