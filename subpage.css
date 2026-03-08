@@ -64,57 +64,7 @@
     color: var(--clr-primary);
 }
 
-.main-page-title {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    margin: 2rem 0 1rem;
-    color: var(--clr-primary);
-}
-
-.sub-title-text {
-    font-size: 1.25rem;
-    color: var(--clr-text-muted);
-    font-style: italic;
-    margin-bottom: 3rem;
-}
-
-/* --- Info Section --- */
-.info-section {
-    max-width: 800px;
-    margin: 6rem auto;
-    padding: 0 1.5rem;
-    text-align: center;
-}
-
-.info-title {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.info-title span {
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    color: var(--clr-primary);
-    text-transform: uppercase;
-}
-
-.info-line {
-    flex: 1;
-    height: 1px;
-    background: var(--clr-divider);
-    border: none;
-}
-
-.info-text {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--clr-text-muted);
-    font-style: italic;
-}
-
-/* --- Accordion (Resources List) --- */
+/* --- Accordion --- */
 .accordion-container {
     max-width: 900px;
     margin: 4rem auto 8rem;
@@ -129,10 +79,6 @@
     transition: var(--transition);
 }
 
-.accordion-item:hover {
-    border-color: var(--clr-primary);
-}
-
 .accordion-header {
     padding: 1.5rem 2rem;
     cursor: pointer;
@@ -145,33 +91,25 @@
 }
 
 .accordion-symbol {
-    font-size: 1.2rem;
     transition: transform 0.3s ease;
-    opacity: 0.5;
 }
 
 .accordion-item.active .accordion-symbol {
     transform: rotate(45deg);
-    opacity: 1;
 }
 
-/* FIX: Inhalt wächst nun mit */
 .accordion-content {
     max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
+    overflow: hidden; /* Verhindert hässliche Balken während der Animation */
+    transition: max-height 0.4s ease-out;
     padding: 0 2rem;
     background-color: rgba(26, 24, 20, 0.5);
 }
 
+/* Wenn aktiv: Platz lassen für alles */
 .accordion-item.active .accordion-content {
-    max-height: 2000px; /* Genug Platz für Untermenüs */
+    overflow: visible; 
     padding: 1rem 2rem 2.5rem;
-}
-
-/* Scrollen ermöglichen */
-body {
-    overflow-y: auto;
 }
 
 /* --- Nested Sub-accordion --- */
@@ -196,39 +134,28 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    color: var(--clr-text-muted);
-    font-size: 1rem;
 }
 
 .sub-accordion-item.active .sub-accordion-content {
-    max-height: 800px;
+    max-height: none; /* Wichtig für Handy */
     padding-top: 0.5rem;
 }
 
-.sub-accordion-item.active .sub-accordion-symbol {
-    transform: rotate(45deg);
+/* --- GLOBALE SCROLL-REPARATUR --- */
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto !important; /* Erzwingt Scrollen auf Handys */
+    height: auto !important;
+    -webkit-overflow-scrolling: touch; /* Macht Scrollen auf iPhones flüssiger */
 }
 
 /* --- Mobile Responsive --- */
 @media (max-width: 768px) {
-    .sub-hero-container {
-        min-height: 40vh;
-    }
-
-    .main-page-title {
-        font-size: 3.5rem;
-    }
-
     .accordion-header {
         padding: 1.25rem 1.5rem;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
     }
-
     .accordion-content {
-        padding: 0 1.5rem;
-    }
-
-    .info-section {
-        margin: 4rem auto;
+        padding: 0 1rem;
     }
 }
