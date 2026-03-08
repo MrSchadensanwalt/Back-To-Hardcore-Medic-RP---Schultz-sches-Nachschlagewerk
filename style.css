@@ -174,18 +174,35 @@ h1, h2, h3, h4 {
 }
 
 /* Static images in background - refined */
-.panels-wrapper: url('images/Operation.png'), url('images/Labor.png');:before,
-.panels-wrapper::after {
+.panels-wrapper::before {
     content: '';
     position: absolute;
     top: 10%;
+    left: 0; /* oder gewünschte Position */
     width: 300px;
     height: 80%;
+    background-image: url(images/Operation.png);
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.05;
     pointer-events: none;
     display: none; /* Hidden on small screens */
+}
+
+.panels-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0; /* oder gewünschte Position */
+    width: 300px;
+    height: 80%;
+    background-image: url(images/Labor.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.05;
+    pointer-events: none;
+    display: none; /* Hidden on small screens */
+}
 }
 
 @media (min-width: 1400px) {
@@ -337,4 +354,5 @@ h1, h2, h3, h4 {
         padding: 3rem 1.5rem;
     }
 }
+
 
