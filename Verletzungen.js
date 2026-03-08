@@ -1,50 +1,58 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Haupt-Accordion
+    
+    // Haupt-Accordion Funktion
     const items = document.querySelectorAll(".accordion-item");
     items.forEach(item => {
         const header = item.querySelector(".accordion-header");
         const content = item.querySelector(".accordion-content");
 
-        header.addEventListener("click", () => {
+        header.addEventListener("click", function(e) {
+            // Verhindert Doppelklicks auf Handys
+            e.preventDefault();
+            
             const isActive = item.classList.contains("active");
 
-            // Andere schließen
+            // Alle anderen schließen
             items.forEach(i => {
                 i.classList.remove("active");
                 i.querySelector(".accordion-content").style.maxHeight = null;
             });
 
-            if(!isActive){
+            if (!isActive) {
                 item.classList.add("active");
+                // Erst die genaue Pixelhöhe für die Animation
                 content.style.maxHeight = content.scrollHeight + "px";
                 
-                // WICHTIG FÜR HANDY: Nach der Animation Höhe freigeben
+                // Nach der Animation (400ms) auf 'fit-content' setzen, 
+                // damit Untermenüs und Handy-Scroll funktionieren
                 setTimeout(() => {
-                    if(item.classList.contains("active")) {
-                        content.style.maxHeight = "none";
+                    if (item.classList.contains("active")) {
+                        content.style.maxHeight = "fit-content";
                     }
-                }, 400);
+                }, 450);
             }
         });
     });
 
-    // Sub-Accordion (Schussverletzungsarten)
+    // Sub-Accordion (z.B. Schussverletzungen)
     const subItems = document.querySelectorAll(".sub-accordion-item");
     subItems.forEach(sub => {
         const subHeader = sub.querySelector(".sub-accordion-header");
         const subContent = sub.querySelector(".sub-accordion-content");
 
-        subHeader.addEventListener("click", (e) => {
-            e.stopPropagation(); 
+        subHeader.addEventListener("click", function(e) {
+            e.stopPropagation(); // WICHTIG: Hauptmenü bleibt offen
+            
             const isActive = sub.classList.contains("active");
             const parentContent = sub.closest(".accordion-content");
 
-            if(!isActive){
+            if (!isActive) {
                 sub.classList.add("active");
                 subContent.style.maxHeight = subContent.scrollHeight + "px";
-                // Parent Container Platz geben
-                if(parentContent.style.maxHeight !== "none") {
-                    parentContent.style.maxHeight = (parentContent.scrollHeight + subContent.scrollHeight) + "px";
+                
+                // Dem Hauptcontainer erlauben mitzuwachsen
+                if (parentContent) {
+                    parentContent.style.maxHeight = "fit-content";
                 }
             } else {
                 sub.classList.remove("active");
