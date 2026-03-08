@@ -2,6 +2,21 @@
 <html lang="de">
 
 <head>
+
+    <script>
+  // Dein geheimes Passwort
+  var passwort = "Joseph Schultz"; 
+  
+  // Abfrage beim Laden der Seite
+  var eingabe = prompt("Dies ist eine private Testseite. Bitte gib das Passwort ein:");
+
+  if (eingabe !== passwort) {
+    alert("Zugriff verweigert.");
+    // Schickt den Nutzer weg, z.B. zu Google
+    window.location.href = "https://www.google.de"; 
+  }
+</script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schultz'sches Nachschlagewerk</title>
@@ -112,5 +127,6 @@
     </footer>
 
 </body>
+
 
 </html>
