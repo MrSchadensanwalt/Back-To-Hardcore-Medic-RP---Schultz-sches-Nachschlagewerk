@@ -55,10 +55,10 @@
             <div class="line"></div>
         </div>
 
-<div class="search-wrap" style="text-align: center; margin: 2rem 0;">
-    <input type="text" id="globalSearch" placeholder="Nach Krankheiten, Medikamenten etc. suchen..." 
-           style="padding: 12px; width: 350px; border-radius: 5px; border: 1px solid var(--clr-primary); background: var(--clr-surface); color: var(--clr-text); font-family: 'EB Garamond', serif;">
-    <button onclick="starteSuche()" style="padding: 12px 25px; background: var(--clr-primary); color: #000; font-weight: bold; cursor: pointer; border: none; border-radius: 5px; font-family: 'Playfair Display', serif;">Suchen</button>
+<div class="search-container">
+    <input type="text" id="globalSearch" placeholder="Nach Verletzung oder Krankheit suchen...">
+    
+    <button class="search-btn" onclick="searchFunction()">Suchen</button>
 </div>
 
 <script>
@@ -176,6 +176,7 @@ document.getElementById('globalSearch').addEventListener('keypress', (e) => { if
 
 
 </html>
+
 
 
 
