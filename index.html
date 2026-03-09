@@ -67,17 +67,18 @@ function starteSuche() {
 
     // GROSSES MAPPING BASIEREND AUF DEINER LISTE
     const seiten = {
-        "Verletzungen.html": ["Schussverletzung", "schnitt", "gewalt", "gehirn", "fraktur", "gelenk", "brand", "kälte", "tierbiss", "biss"],
-        "Krankheiten.html": ["pest", "cholera", "typhus", "tbc", "tuberkulose", "diphtherie", "masern", "keuchhusten", "grippe", "pocken", "gangrän", "syphilis", "gonorrhoe", "anämie", "malaria", "gelbsucht", "nieren", "flechte", "ekzem", "frostbeule", "depression", "melancholie", "wahnsinn", "epilepsie"],
-        "Beschwerden.html": ["kopfschmerz", "fieber", "übelkeit", "erbrechen", "durchfall", "magen", "erkältung", "hals", "husten", "rücken", "schlaf", "zahn", "müdigkeit", "sehstörung", "eiter", "allergie", "angst", "panik", "asthma", "blutung", "schock", "bewusstlos"],
-        "Medikamente.html": ["aspirin", "antipyrin", "phenacetin", "bromid", "morphin", "kokain", "laudanum", "arnika", "heroin", "codein", "chinin", "salicyl", "rizinus", "tee", "pastille", "menthol", "elixir", "tonikum", "frauengold", "fingerhut", "chloroform", "äther", "serum", "kochsalz", "glukose", "carbol", "jod", "alkohol", "quecksilber", "senf", "tonic", "bitters", "coca-cola", "belladonna", "zinksalbe", "bienenwachs", "calomel"],
-        "ausruestung.html": ["skalpell", "messer", "tenotom", "lanzette", "schere", "pinzette", "klemme", "zange", "wundhaken", "retraktor", "spreizer", "nadel", "sonde", "säge", "bohrer", "meißel", "hammer", "raspel", "verband", "mull", "baumwolle", "gaze", "kompresse", "gips", "schiene", "drainage", "injektion", "spritze", "infusion", "stethoskop", "thermometer", "hammer", "spiegel", "spatel", "lampe", "lupe"]
+        "Verletzungen.html": ["Schussverletzung", "Schnittwunden", "stumpfe Gewalt", "Gehirnerschütterung", "Fraktur", "Bruch", "Prellung", "Pferdetritt", "Faustschlag", "Gelenkverletzungen", "Brandwunden", "Kälteverletzungen", "spezifische Verletzungen", "Augenverletzung", "Pneumothorax", "Tierbisse"],
+        "Krankheiten.html": ["Pest", "Cholera", "Typhus", "Influenza", "Tuberkulose", "Diphtherie", "Masern", "Keuchhusten", "Grippe", "Pocken", "Gangrän", "Syphilis", "Gonorrhoe", "Anämie", "Malaria", "Gelbsucht", "Nierenentzündung", "Ringelflechte", "Ekzem", "Frostbeule", "Depression", "Melancholie", "Wahnsinn", "Epilepsie", "Hysterie", "Wundfieber", "Choleraartige Symptome", "Hepatitis"],
+        "Beschwerden.html": ["Kopfschmerz", "Fieber", "Übelkeit", "Erbrechen", "Durchfall", "Magenbeschwerden", "Erkältung", "Halsschmerzen", "Husten", "Rückenschmerzen", "Schlaflosigkeit", "Zahnschmerzen", "Müdigkeit", "Sehstörungen", "Eiterungen", "Allergie", "Angst", "Panik", "Asthma", "Blutungen", "Schock", "Bewusstlosigkeit", "Schüttelfrost", "laufende Nase", "Schluckbeschwerden", "Atembeschwerden", "Bandscheibenprobleme", "Arthritis", "Nervosität", "Karies", "Erschöpfung", "Augenprobleme", "Schlechte Wundheilung", "Panikattacken", "Atemnot", "Wundinfektionen", "Hautausschläge"],
+        "Medikamente.html": ["Morphin", "Kokain", "Laudanum", "Arnika-Tinktur", "Heroin-Tinktur", "Codein-Tinktur", "Chinin-Lösung", "Chininpulver", "Salicylsäure", "Rizinusöl", "Kamillentee", "Pfefferminztee", "Salbeitee", "Schmerz Hustenpastillen", "Mentholpastillen", "Opiumelixir", "Fiebertonikum", "Bronchialelixir", "Frauengold", "Fingerhutextrakt", "Chloroform", "Äther", "Diphtherie-Serum", "Kochsalzlösung", "Glukoselösungen", "Carbolsäure", "Jodlösung", "Alkohol", "Quecksilberverbindungen", "Senfpflaster", "Grove’s Tasteless Chill Tonic", "Angostura Bitters", "Coca Cola", "Belladonna", "Zinksalbe", "Bienenwachs Salbe", "Calomel Salbe", "Arnikasalbe", "Mentholsalbe", "Liebig’s Malt Extract", "Dr. Boyce’s Tonic Bitters", "Opiumtinktur", "Brechmittel", "Bromide", "Phenacetin", "Antipyrin", "Aspirin"],
+        "ausruestung.html": ["Skalpell", "Chirurgische Messer", "Amputationsmesser", "Tenotom", "Lanzetten", "Chirurgische Scheren", "Verbandsscheren", "Nahtscheren", "Knochenscheren", "Chirurgische Pinzetten", "Anatomische Pinzetten", "Gefäßklemmen", "Arterienklemmen", "Knochenzangen", "Kugelzangen", "Wundhaken", "Retraktoren", "Hautspreizer", "Chirurgische Nadeln", "Nahtnadeln", "Sonden", "Kathetersonden", "Knochensägen", "Gigli-Drahtsägen", "Trepanationsbohrer", "Chirurgische Meißel", "Knochenhammer", "Knochenraspeln", "Verbandmaterial", "Mull", "Baumwolle", "Gazeverbände", "Kompressen", "Verbandrollen", "Gipsverbände", "Schienen", "Wunddrainagen", "Gummidrains", "Injektion", "Metall-Spritzen", "Hypodermische Nadeln", "Infusionsflaschen", "Infusionsschläuche", "Tropfgestelle", "Klistierspritzen", "Irrigatoren", "Stethoskop", "Thermometer", "Reflexhammer", "Augenspiegel", "Ohrenspiegel", "Zungenspatel", "Untersuchungslampen", "Lupen"]
     };
 
     let zielSeite = "";
     for (let seite in seiten) {
         if (seiten[seite].some(begriff => query.includes(begriff))) {
             zielSeite = seite;
+
             break;
         }
     }
@@ -173,6 +174,7 @@ document.getElementById('globalSearch').addEventListener('keypress', (e) => { if
 
 
 </html>
+
 
 
 
