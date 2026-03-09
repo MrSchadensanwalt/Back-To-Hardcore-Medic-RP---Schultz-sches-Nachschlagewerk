@@ -21,4 +21,4 @@ fetch('data.json')
         output.innerHTML = `<h2>${krankheit.name} Behandlung</h2>
                             <ul>${krankheit.behandlung.map(b => `<li>${b}</li>`).join('')}</ul>`;
     }
-
+});
