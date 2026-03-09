@@ -101,11 +101,13 @@ h1, h2, h3, h4 {
 }
 
 /* --- Hero Navigation --- */
+/* --- Hero Navigation --- */
 .hero-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1.5rem 3rem;
+    /* Verringert den Abstand zwischen den Links am Desktop */
+    gap: 1rem 2.5rem; 
     margin: 2rem 0;
 }
 
@@ -124,22 +126,19 @@ h1, h2, h3, h4 {
     border-bottom-color: var(--clr-primary);
 }
 
-.subheading {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 400;
-    color: var(--clr-text);
-    margin: 2rem auto;
-    max-width: 800px;
+/* Spezielle Handy-Anpassung für die Homepage-Navigation */
+@media (max-width: 768px) {
+    .hero-links {
+        flex-direction: column; /* Alles untereinander */
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .hero-links .top-link {
+        width: 100%;
+        text-align: center;
+    }
 }
-
-.subtext {
-    font-size: 1.1rem;
-    color: var(--clr-text-muted);
-    font-style: italic;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
 /* --- Content Sections --- */
 .under-hero {
     padding: var(--section-padding) 1rem;
@@ -416,6 +415,7 @@ h1, h2, h3, h4 {
         padding: 3rem 1.5rem;
     }
 }
+
 
 
 
