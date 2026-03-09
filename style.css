@@ -1,4 +1,8 @@
 
+html {
+    scroll-behavior: smooth;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
 
 :root {
@@ -353,5 +357,6 @@ h1, h2, h3, h4 {
         padding: 3rem 1.5rem;
     }
 }
+
 
 
