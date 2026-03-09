@@ -16,42 +16,45 @@ subAccordionHeaders.forEach(header => {
     });
 });
 
-// --- Automatische Scroll- und Öffnungslogik ---
+/**
+ * GLOBALER AUTO-SCROLL & OPEN FÜR SCHULTZ'SCHES NACHSCHLAGEWERK
+ */
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get('search'); // Wir nutzen 'search' als Schlüssel
+    const searchTerm = urlParams.get('search');
 
     if (searchTerm) {
         const query = decodeURIComponent(searchTerm).toLowerCase();
-        const items = document.querySelectorAll('.accordion-item');
+        // Wir suchen in Hauptüberschriften UND Unterüberschriften
+        const headers = document.querySelectorAll('.accordion-header, .sub-accordion-header');
 
-        items.forEach(item => {
-            const header = item.querySelector('.accordion-header');
-            const headerText = header.textContent.toLowerCase();
-            
-            // Prüfen, ob der Suchbegriff im Titel vorkommt
-            if (headerText.includes(query)) {
-                // 1. Das Accordion als aktiv markieren
-                item.classList.add('active');
-                
-                // 2. Den Inhalt ausfahren (wichtig für die Animation)
-                const content = item.querySelector('.accordion-content');
-                if (content) {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    
-                    // Deine Spezial-Logik für Untermenüs
-                    setTimeout(() => {
-                        if (item.classList.contains("active")) {
-                            content.style.maxHeight = "fit-content";
-                        }
-                    }, 450);
+        for (let header of headers) {
+            if (header.textContent.toLowerCase().includes(query)) {
+                // Falls es ein Sub-Accordion ist, erst den Haupt-Vater öffnen
+                const parentItem = header.closest('.accordion-item');
+                if (parentItem) {
+                    parentItem.classList.add('active');
+                    const pContent = parentItem.querySelector('.accordion-content');
+                    if (pContent) {
+                        pContent.style.maxHeight = "fit-content"; // Sofort auf für Sub-Suche
+                    }
                 }
 
-                // 3. Sanft dorthin scrollen (mit kurzer Verzögerung, damit das Layout bereit ist)
+                // Das eigentliche Element öffnen
+                const item = header.parentElement;
+                item.classList.add('active');
+                const content = item.querySelector('.accordion-content, .sub-accordion-content');
+                if (content) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+
+                // Sanft dorthin scrollen
                 setTimeout(() => {
-                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 500);
+                    header.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 600);
+                
+                break; // Suche beenden wenn gefunden
             }
-        });
+        }
     }
 });
