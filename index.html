@@ -41,55 +41,42 @@
             </nav>
 
 <div class="search-wrap" style="text-align: center; margin: 2rem 0;">
-    <input type="text" id="globalSearch" placeholder="z.B. Cholera, Morphium, Schusswunde..." 
-           style="padding: 12px; width: 300px; border-radius: 5px; border: 1px solid var(--clr-primary); background: var(--clr-surface); color: var(--clr-text);">
-    <button onclick="starteSuche()" style="padding: 12px 20px; background: var(--clr-primary); color: #000; font-weight: bold; cursor: pointer; border: none; border-radius: 5px;">Suchen</button>
+    <input type="text" id="globalSearch" placeholder="Nach Krankheiten, Medikamenten etc. suchen..." 
+           style="padding: 12px; width: 350px; border-radius: 5px; border: 1px solid var(--clr-primary); background: var(--clr-surface); color: var(--clr-text); font-family: 'EB Garamond', serif;">
+    <button onclick="starteSuche()" style="padding: 12px 25px; background: var(--clr-primary); color: #000; font-weight: bold; cursor: pointer; border: none; border-radius: 5px; font-family: 'Playfair Display', serif;">Suchen</button>
 </div>
 
 <script>
 function starteSuche() {
-    const eingabe = document.getElementById('globalSearch').value.toLowerCase().trim();
-    if (!eingabe) return;
+    const query = document.getElementById('globalSearch').value.toLowerCase().trim();
+    if (!query) return;
 
-    // Das Mapping: Welches Wort führt zu welcher Seite?
-    const datenbank = {
-        // Krankheiten
-        "cholera": "Krankheiten.html", "pest": "Krankheiten.html", "pocken": "Krankheiten.html", 
-        "tuberkulose": "Krankheiten.html", "tbc": "Krankheiten.html", "syphilis": "Krankheiten.html",
-        // Medikamente
-        "aspirin": "Medikamente.html", "morphium": "Medikamente.html", "alkohol": "Medikamente.html", 
-        "laudanum": "Medikamente.html", "bromid": "Medikamente.html",
-        // Ausrüstung
-        "skalpell": "ausruestung.html", "säge": "ausruestung.html", "lanzette": "ausruestung.html", 
-        "lupe": "ausruestung.html", "amputationsmesser": "ausruestung.html",
-        // Verletzungen
-        "schusswunde": "Verletzungen.html", "messer": "Verletzungen.html", "bruch": "Verletzungen.html", 
-        "verbrennung": "Verletzungen.html",
-        // Beschwerden
-        "kopfschmerz": "Beschwerden.html", "schock": "Beschwerden.html", "bewusstlos": "Beschwerden.html"
+    // GROSSES MAPPING BASIEREND AUF DEINER LISTE
+    const seiten = {
+        "Verletzungen.html": ["schuss", "schnitt", "gewalt", "gehirn", "fraktur", "gelenk", "brand", "kälte", "tierbiss", "biss"],
+        "Krankheiten.html": ["pest", "cholera", "typhus", "tbc", "tuberkulose", "diphtherie", "masern", "keuchhusten", "grippe", "pocken", "gangrän", "syphilis", "gonorrhoe", "anämie", "malaria", "gelbsucht", "nieren", "flechte", "ekzem", "frostbeule", "depression", "melancholie", "wahnsinn", "epilepsie"],
+        "Beschwerden.html": ["kopfschmerz", "fieber", "übelkeit", "erbrechen", "durchfall", "magen", "erkältung", "hals", "husten", "rücken", "schlaf", "zahn", "müdigkeit", "sehstörung", "eiter", "allergie", "angst", "panik", "asthma", "blutung", "schock", "bewusstlos"],
+        "Medikamente.html": ["aspirin", "antipyrin", "phenacetin", "bromid", "morphin", "kokain", "laudanum", "arnika", "heroin", "codein", "chinin", "salicyl", "rizinus", "tee", "pastille", "menthol", "elixir", "tonikum", "frauengold", "fingerhut", "chloroform", "äther", "serum", "kochsalz", "glukose", "carbol", "jod", "alkohol", "quecksilber", "senf", "tonic", "bitters", "coca-cola", "belladonna", "zinksalbe", "bienenwachs", "calomel"],
+        "ausruestung.html": ["skalpell", "messer", "tenotom", "lanzette", "schere", "pinzette", "klemme", "zange", "wundhaken", "retraktor", "spreizer", "nadel", "sonde", "säge", "bohrer", "meißel", "hammer", "raspel", "verband", "mull", "baumwolle", "gaze", "kompresse", "gips", "schiene", "drainage", "injektion", "spritze", "infusion", "stethoskop", "thermometer", "hammer", "spiegel", "spatel", "lampe", "lupe"]
     };
 
     let zielSeite = "";
-    // Suche in der Datenbank
-    for (let begriff in datenbank) {
-        if (eingabe.includes(begriff)) {
-            zielSeite = datenbank[begriff];
+    for (let seite in seiten) {
+        if (seiten[seite].some(begriff => query.includes(begriff))) {
+            zielSeite = seite;
             break;
         }
     }
 
     if (zielSeite) {
-        // Leitet weiter und gibt den Suchbegriff mit
-        window.location.href = zielSeite + "?finde=" + encodeURIComponent(eingabe);
+        window.location.href = zielSeite + "?search=" + encodeURIComponent(query);
     } else {
-        alert("Begriff nicht gefunden. Versuche es mit einem Hauptbegriff (z.B. Cholera).");
+        alert("Begriff nicht gefunden. Versuche es mit einem Schlagwort aus dem Register.");
     }
 }
 
-// Suche per Enter-Taste
-document.getElementById('globalSearch').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') starteSuche();
-});
+// Enter-Taste Support
+document.getElementById('globalSearch').addEventListener('keypress', (e) => { if (e.key === 'Enter') starteSuche(); });
 </script>
             
             <div class="divider"></div>
@@ -187,6 +174,7 @@ document.getElementById('globalSearch').addEventListener('keypress', function (e
 
 
 </html>
+
 
 
 
