@@ -168,6 +168,63 @@ h1, h2, h3, h4 {
     white-space: nowrap;
 }
 
+/* --- Suchleiste Design (Vintage Medic Style) --- */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 4rem auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#globalSearch {
+    flex: 1;
+    background-color: var(--clr-surface-light);
+    border: 1px solid var(--clr-divider);
+    color: var(--clr-text);
+    padding: 1rem 1.5rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    transition: var(--transition);
+    outline: none;
+}
+
+#globalSearch:focus {
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 10px rgba(196, 164, 124, 0.2);
+}
+
+.search-btn {
+    background-color: var(--clr-surface-light);
+    color: var(--clr-primary);
+    border: 1px solid var(--clr-primary);
+    padding: 0 2rem;
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.search-btn:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-bg);
+}
+
+/* Anpassung für mobile Geräte */
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+    
+    .search-btn {
+        padding: 1rem;
+    }
+}
+
 /* --- Category Panels --- */
 .panels-wrapper {
     background-color: var(--clr-surface);
@@ -359,6 +416,7 @@ h1, h2, h3, h4 {
         padding: 3rem 1.5rem;
     }
 }
+
 
 
 
