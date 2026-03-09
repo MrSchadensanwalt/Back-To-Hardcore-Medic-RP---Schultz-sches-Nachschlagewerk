@@ -16,28 +16,38 @@ subAccordionHeaders.forEach(header => {
     });
 });
 
+// --- Automatische Scroll- und Öffnungslogik ---
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get('search');
+    const searchTerm = urlParams.get('search'); // Wir nutzen 'search' als Schlüssel
 
     if (searchTerm) {
-        const query = searchTerm.toLowerCase();
+        const query = decodeURIComponent(searchTerm).toLowerCase();
         const items = document.querySelectorAll('.accordion-item');
 
         items.forEach(item => {
-            const headerText = item.querySelector('.accordion-header').textContent.toLowerCase();
+            const header = item.querySelector('.accordion-header');
+            const headerText = header.textContent.toLowerCase();
             
+            // Prüfen, ob der Suchbegriff im Titel vorkommt
             if (headerText.includes(query)) {
-                // 1. Dieses Accordion öffnen
+                // 1. Das Accordion als aktiv markieren
                 item.classList.add('active');
+                
+                // 2. Den Inhalt ausfahren (wichtig für die Animation)
                 const content = item.querySelector('.accordion-content');
                 if (content) {
                     content.style.maxHeight = content.scrollHeight + "px";
-                    // Für Verletzungen.js Kompatibilität:
-                    setTimeout(() => { content.style.maxHeight = "fit-content"; }, 450);
+                    
+                    // Deine Spezial-Logik für Untermenüs
+                    setTimeout(() => {
+                        if (item.classList.contains("active")) {
+                            content.style.maxHeight = "fit-content";
+                        }
+                    }, 450);
                 }
 
-                // 2. Dorthin scrollen
+                // 3. Sanft dorthin scrollen (mit kurzer Verzögerung, damit das Layout bereit ist)
                 setTimeout(() => {
                     item.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 500);
