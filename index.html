@@ -40,14 +40,57 @@
                 <a href="ausruestung.html" class="top-link">Ausrüstung</a>
             </nav>
 
-<div class="search-container" style="margin-top: 2rem; text-align: center;">
-    <input type="text" id="globalSearch" placeholder="Nach Krankheiten, Medikamenten etc. suchen..." 
-           style="padding: 10px 20px; width: 300px; border-radius: 5px; border: 1px solid var(--clr-primary); background: var(--clr-surface); color: var(--clr-text); font-family: 'EB Garamond', serif;">
-    <button onclick="performGlobalSearch()" 
-            style="padding: 10px 20px; background: var(--clr-primary); color: var(--clr-bg); border: none; cursor: pointer; font-family: 'Playfair Display', serif; font-weight: bold;">
-        Suchen
-    </button>
+<div class="search-wrap" style="text-align: center; margin: 2rem 0;">
+    <input type="text" id="globalSearch" placeholder="z.B. Cholera, Morphium, Schusswunde..." 
+           style="padding: 12px; width: 300px; border-radius: 5px; border: 1px solid var(--clr-primary); background: var(--clr-surface); color: var(--clr-text);">
+    <button onclick="starteSuche()" style="padding: 12px 20px; background: var(--clr-primary); color: #000; font-weight: bold; cursor: pointer; border: none; border-radius: 5px;">Suchen</button>
 </div>
+
+<script>
+function starteSuche() {
+    const eingabe = document.getElementById('globalSearch').value.toLowerCase().trim();
+    if (!eingabe) return;
+
+    // Das Mapping: Welches Wort führt zu welcher Seite?
+    const datenbank = {
+        // Krankheiten
+        "cholera": "Krankheiten.html", "pest": "Krankheiten.html", "pocken": "Krankheiten.html", 
+        "tuberkulose": "Krankheiten.html", "tbc": "Krankheiten.html", "syphilis": "Krankheiten.html",
+        // Medikamente
+        "aspirin": "Medikamente.html", "morphium": "Medikamente.html", "alkohol": "Medikamente.html", 
+        "laudanum": "Medikamente.html", "bromid": "Medikamente.html",
+        // Ausrüstung
+        "skalpell": "ausruestung.html", "säge": "ausruestung.html", "lanzette": "ausruestung.html", 
+        "lupe": "ausruestung.html", "amputationsmesser": "ausruestung.html",
+        // Verletzungen
+        "schusswunde": "Verletzungen.html", "messer": "Verletzungen.html", "bruch": "Verletzungen.html", 
+        "verbrennung": "Verletzungen.html",
+        // Beschwerden
+        "kopfschmerz": "Beschwerden.html", "schock": "Beschwerden.html", "bewusstlos": "Beschwerden.html"
+    };
+
+    let zielSeite = "";
+    // Suche in der Datenbank
+    for (let begriff in datenbank) {
+        if (eingabe.includes(begriff)) {
+            zielSeite = datenbank[begriff];
+            break;
+        }
+    }
+
+    if (zielSeite) {
+        // Leitet weiter und gibt den Suchbegriff mit
+        window.location.href = zielSeite + "?finde=" + encodeURIComponent(eingabe);
+    } else {
+        alert("Begriff nicht gefunden. Versuche es mit einem Hauptbegriff (z.B. Cholera).");
+    }
+}
+
+// Suche per Enter-Taste
+document.getElementById('globalSearch').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') starteSuche();
+});
+</script>
             
             <div class="divider"></div>
 
@@ -144,6 +187,7 @@
 
 
 </html>
+
 
 
 
