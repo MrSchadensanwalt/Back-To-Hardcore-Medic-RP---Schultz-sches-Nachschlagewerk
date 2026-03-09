@@ -49,6 +49,15 @@
     flex-wrap: wrap;
     gap: 1rem 2rem;
     margin: 2rem 0;
+    padding: 1.5rem 0;
+    position: relative;
+    /* Linien oben und unten wie auf der Homepage */
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    background: 
+        linear-gradient(90deg, transparent, var(--clr-primary), transparent) top no-repeat,
+        linear-gradient(90deg, transparent, var(--clr-primary), transparent) bottom no-repeat;
+    background-size: clamp(100px, 40%, 300px) 1px; /* Gleiche Größe wie .divider auf Homepage */
 }
 
 .sub-nav a {
@@ -64,17 +73,14 @@
     color: var(--clr-primary);
 }
 
-.main-page-title {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    margin: 2rem 0 1rem;
-    color: var(--clr-primary);
-}
-
-.sub-title-text {
-    font-size: 1.25rem;
-    color: var(--clr-text-muted);
-    font-style: italic;
-    margin-bottom: 3rem;
+/* Handy-Anpassung für die Unterseiten-Navigation */
+@media (max-width: 768px) {
+    .sub-nav {
+        flex-direction: column; /* Alles untereinander */
+        align-items: center;
+        gap: 1.2rem;
+        background-size: 150px 1px; /* Etwas schmalere Linien auf dem Handy */
+    }
 }
 
 /* --- Info Section --- */
@@ -226,3 +232,4 @@
         margin: 4rem auto;
     }
 }
+
