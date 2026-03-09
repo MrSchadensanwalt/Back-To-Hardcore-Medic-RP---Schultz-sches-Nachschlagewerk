@@ -58,6 +58,37 @@ document.addEventListener("DOMContentLoaded", function() {
                 sub.classList.remove("active");
                 subContent.style.maxHeight = null;
             }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('search');
+
+    if (searchTerm) {
+        const query = searchTerm.toLowerCase();
+        const items = document.querySelectorAll('.accordion-item');
+
+        items.forEach(item => {
+            const headerText = item.querySelector('.accordion-header').textContent.toLowerCase();
+            
+            if (headerText.includes(query)) {
+                // 1. Dieses Accordion öffnen
+                item.classList.add('active');
+                const content = item.querySelector('.accordion-content');
+                if (content) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    // Für Verletzungen.js Kompatibilität:
+                    setTimeout(() => { content.style.maxHeight = "fit-content"; }, 450);
+                }
+
+                // 2. Dorthin scrollen
+                setTimeout(() => {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 500);
+            }
+        });
+    }
+});
         });
     });
 });
+
