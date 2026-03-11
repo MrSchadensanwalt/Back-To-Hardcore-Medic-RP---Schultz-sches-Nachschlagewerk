@@ -3,6 +3,14 @@
 
 <head>
 
+<script>
+  // Prüfen, ob der "Stempel" vorhanden ist
+  if (sessionStorage.getItem("rp_access") !== "true") {
+    // Wenn nicht, ab zur Login-Seite!
+    window.location.href = "login.html";
+  }
+</script>
+    
     <meta name="google-site-verification" content="..." />
     
     <script>
@@ -181,5 +189,6 @@ document.getElementById('globalSearch').addEventListener('keypress', (e) => {
 
 
 </html>
+
 
 
