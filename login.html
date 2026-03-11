@@ -117,22 +117,22 @@
 
 <script>
     function check() {
-
+ 
         var eingabe = document.getElementById("pwField").value.trim().toLowerCase();
         
-        
-        var passwortKorrekt = "8d40777e38e40f1a94254462194f18376484e03746c430268ec3540e1e62aa71";
-        
-        if(eingabe === passwortKorrekt) {
 
+        var geheimnis = "8d40777e38e40f1a94254462194f18376484e03746c430268ec3540e1e62aa71";
+        
+ 
+        var eingabeHash = CryptoJS.SHA256(eingabe).toString();
+
+        if(eingabeHash === geheimnis) {
             sessionStorage.setItem("rp_access", "true");
-
             window.location.href = "index.html"; 
         } else {
             alert("Zugriff verweigert. Dr. Schultz wurde informiert.");
         }
     }
-
 
     document.getElementById("pwField").addEventListener("keypress", function(e) {
         if (e.key === "Enter") { check(); }
