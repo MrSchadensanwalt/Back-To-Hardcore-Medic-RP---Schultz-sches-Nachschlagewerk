@@ -9,7 +9,7 @@
 
     <style>
         :root {
-            --clr-primary: #c4a47c; /* Dein Gold-Ton */
+            --clr-primary: #c4a47c; 
             --clr-bg: #1a1a1a;
             --clr-panel: #252525;
             --font-main: 'Georgia', serif;
@@ -27,7 +27,7 @@
             overflow: hidden;
         }
 
-        /* Das Login-Fenster */
+
         .login-card {
             background-color: var(--clr-panel);
             border: 2px solid var(--clr-primary);
@@ -39,7 +39,7 @@
             position: relative;
         }
 
-        /* Zierlinien für den Vintage-Look */
+   
         .login-card::before, .login-card::after {
             content: "";
             position: absolute;
@@ -107,45 +107,36 @@
 </head>
 <body oncontextmenu="return false;"> <div class="login-card">
         <h1>Autorisierung</h1>
-        <p>Eigentum von Joseph Schultz.<br>Unbefugtes Lesen ist strengstens untersagt.</p>
+        <p>Eigentum von Dr. Schultz.<br>Unbefugtes Lesen ist strengstens untersagt.</p>
         
         <input type="password" id="pwField" placeholder="Kennwort eingeben...">
         <button onclick="check()">Eintreten</button>
 
-        <div class="footer-note">Medic-RP Nachschlagewerk © 1890</div>
+        <div class="footer-note">@2026 Back To Hardcore Medic-RP</div>
     </div>
 
-    <script>
-        function check() {
-            var eingabe = document.getElementById("pwField").value;
-            
-            // Das Passwort "Joseph Schultz" als verschlüsselter Hash
-            var geheimnis = "88668383a15291416e9134a66710471b0583b632906803ba97d1976a44383c27";
-            
-            // Eingabe verschlüsseln
-            var eingabeHash = CryptoJS.SHA256(eingabe).toString();
-            
-            if(eingabeHash === geheimnis) {
-                // Stempel für den Türsteher setzen
-                sessionStorage.setItem("rp_access", "true");
-                // Weiterleitung zur index.html (kein Umbenennen nötig!)
-                window.location.href = "index.html";
-            } else {
-                alert("Zugriff verweigert. Die Kanzlei Schultz wurde informiert.");
-            }
-        }
+<script>
+    function check() {
+        var eingabe = document.getElementById("pwField").value;
+        
 
-        // Enter-Taste abfangen
-        document.getElementById("pwField").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") { check(); }
-        });
-
-        // F12 und Strg+U sperren
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-                return false;
-            }
+        var geheimnis = "8344e73f8e5f7823f54508494957f88463c64c78161f32a677353f88c3a2f862";
+        
+ 
+        var eingabeHash = CryptoJS.SHA256(eingabe).toString();
+        
+        if(eingabeHash === geheimnis) {
+            sessionStorage.setItem("rp_access", "true");
+            window.location.href = "index.html"; 
+        } else {
+            alert("Zugriff verweigert. Die Kanzlei Schultz wurde informiert.");
         }
-    </script>
+    }
+
+
+    document.getElementById("pwField").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") { check(); }
+    });
+</script>
 </body>
 </html>
