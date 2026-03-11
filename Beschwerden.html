@@ -2,6 +2,15 @@
 <html lang="de">
 
 <head>
+
+<script>
+    // Prüfen, ob der Nutzer eingeloggt ist
+    if (sessionStorage.getItem("rp_access") !== "true") {
+        // Falls nicht, sofort zurück zum Login
+        window.location.href = "login.html";
+    }
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beschwerden - Schultz'sches Nachschlagewerk</title>
@@ -369,6 +378,7 @@
 
 
 </html>
+
 
 
 
