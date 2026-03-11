@@ -1,104 +1,151 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <script>
-      if (sessionStorage.getItem("rp_access") !== "true") {
-        window.location.href = "login.html";
-      }
-    </script>
-    
-    <meta charset="UTF-8">
-    <title>Schultz'sches Nachschlagewerk</title>
-    ```
-
----
-
-### 2. In der neuen `login.html`
-Diese Datei ist neu, daher braucht sie das volle Programm, damit das Design (dein Gold/Schwarz-Stil) auch dort schick aussieht. 
-
-**Hier ist der komplette Code für deine `login.html` (fertig zum Kopieren):**
-
-```html
-<!DOCTYPE html>
-<html lang="de">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schultz - Login</title>
+    <title>Schultz'sches Nachschlagewerk - Autorisierung</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
     <style>
         :root {
-            --clr-primary: #c4a47c;
+            --clr-primary: #c4a47c; /* Dein Gold-Ton */
             --clr-bg: #1a1a1a;
             --clr-panel: #252525;
+            --font-main: 'Georgia', serif;
         }
-        body { 
-            background: var(--clr-bg); 
-            color: var(--clr-primary); 
-            font-family: 'Georgia', serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
+
+        body {
+            background-color: var(--clr-bg);
+            color: var(--clr-primary);
+            font-family: var(--font-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
         }
-        .login-card { 
-            background: var(--clr-panel); 
-            border: 2px solid var(--clr-primary); 
-            padding: 40px; 
-            text-align: center; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            border-radius: 4px;
+
+        /* Das Login-Fenster */
+        .login-card {
+            background-color: var(--clr-panel);
+            border: 2px solid var(--clr-primary);
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+            max-width: 400px;
+            width: 90%;
+            position: relative;
         }
-        h2 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
-        input { 
-            background: #333; 
-            border: 1px solid var(--clr-primary); 
-            color: white; 
-            padding: 12px; 
-            width: 250px; 
-            text-align: center; 
+
+        /* Zierlinien für den Vintage-Look */
+        .login-card::before, .login-card::after {
+            content: "";
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(196, 164, 124, 0.2);
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--clr-primary);
+            padding-bottom: 15px;
+        }
+
+        p {
+            font-style: italic;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        input {
+            background: #111;
+            border: 1px solid var(--clr-primary);
+            color: white;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 1rem;
             margin-bottom: 20px;
             outline: none;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
         }
-        button { 
-            background: var(--clr-primary); 
-            color: #1a1a1a; 
-            border: none; 
-            padding: 12px 30px; 
-            cursor: pointer; 
-            font-weight: bold; 
+
+        button {
+            background-color: var(--clr-primary);
+            color: #1a1a1a;
+            border: none;
+            padding: 15px 40px;
+            font-weight: bold;
             text-transform: uppercase;
-            transition: 0.3s;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
         }
-        button:hover { background: #e2c094; transform: scale(1.05); }
+
+        button:hover {
+            background-color: #e2c094;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(196, 164, 124, 0.3);
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;"> <div class="login-card">
+        <h1>Autorisierung</h1>
+        <p>Eigentum von Joseph Schultz.<br>Unbefugtes Lesen ist strengstens untersagt.</p>
+        
+        <input type="password" id="pwField" placeholder="Kennwort eingeben...">
+        <button onclick="check()">Eintreten</button>
 
-<div class="login-card">
-    <h2>Autorisierung</h2>
-    <p>Geben Sie das Kennwort ein, um fortzufahren:</p>
-    <input type="password" id="pwField" placeholder="Kennwort...">
-    <br>
-    <button onclick="check()">Eintreten</button>
-</div>
+        <div class="footer-note">Medic-RP Nachschlagewerk © 1890</div>
+    </div>
 
-<script>
-    function check() {
-        var val = document.getElementById("pwField").value;
-        if(val === "Joseph Schultz") { // Hier dein Passwort
-            sessionStorage.setItem("rp_access", "true");
-            window.location.href = "index.html"; // Geht zu deiner Hauptseite
-        } else {
-            alert("Zugriff verweigert!");
+    <script>
+        function check() {
+            var eingabe = document.getElementById("pwField").value;
+            
+            // Das Passwort "Joseph Schultz" als verschlüsselter Hash
+            var geheimnis = "88668383a15291416e9134a66710471b0583b632906803ba97d1976a44383c27";
+            
+            // Eingabe verschlüsseln
+            var eingabeHash = CryptoJS.SHA256(eingabe).toString();
+            
+            if(eingabeHash === geheimnis) {
+                // Stempel für den Türsteher setzen
+                sessionStorage.setItem("rp_access", "true");
+                // Weiterleitung zur index.html (kein Umbenennen nötig!)
+                window.location.href = "index.html";
+            } else {
+                alert("Zugriff verweigert. Die Kanzlei Schultz wurde informiert.");
+            }
         }
-    }
 
-    // Erlaubt Enter-Taste
-    document.getElementById("pwField").addEventListener("keypress", function(e) {
-        if (e.key === "Enter") { check(); }
-    });
-</script>
+        // Enter-Taste abfangen
+        document.getElementById("pwField").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") { check(); }
+        });
 
+        // F12 und Strg+U sperren
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
