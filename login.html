@@ -117,19 +117,22 @@
 
 <script>
     function check() {
-        var eingabe = document.getElementById("pwField").value;
+
+        var eingabe = document.getElementById("pwField").value.trim().toLowerCase();
         
-        var geheimnis = "9b03147781b0922895692384297893116544837554807469a4c0a5a3a79f18a4";
         
-        var eingabeHash = CryptoJS.SHA256(eingabe).toString();
+        var passwortKorrekt = "preussen.schultz";
         
-        if(eingabeHash === geheimnis) {
+        if(eingabe === passwortKorrekt) {
+
             sessionStorage.setItem("rp_access", "true");
+
             window.location.href = "index.html"; 
         } else {
             alert("Zugriff verweigert. Die Kanzlei Schultz wurde informiert.");
         }
     }
+
 
     document.getElementById("pwField").addEventListener("keypress", function(e) {
         if (e.key === "Enter") { check(); }
