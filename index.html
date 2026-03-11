@@ -2,37 +2,19 @@
 <html lang="de">
 
 <head>
-
-<script>
-  // Prüfen, ob der "Stempel" vorhanden ist
-  if (sessionStorage.getItem("rp_access") !== "true") {
-    // Wenn nicht, ab zur Login-Seite!
-    window.location.href = "login.html";
-  }
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schultz'sches Nachschlagewerk</title>
     
-    <meta name="google-site-verification" content="..." />
-
     <script>
-      if (sessionStorage.getItem("rp_access") !== "true") {
-        window.location.href = "login.html";
-      }
+        if (sessionStorage.getItem("rp_access") !== "true") {
+            window.location.href = "login.html";
+        }
     </script>
     
     <meta name="google-site-verification" content="..." />
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schultz'sches Nachschlagewerk</title>
-    <link rel="stylesheet" href="style.css">
-
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schultz'sches Nachschlagewerk</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <header class="hero-container">
@@ -189,6 +171,7 @@ document.getElementById('globalSearch').addEventListener('keypress', (e) => {
 
 
 </html>
+
 
 
 
