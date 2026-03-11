@@ -12,20 +12,20 @@
 </script>
     
     <meta name="google-site-verification" content="..." />
-    
-    <script>
-  // Dein geheimes Passwort
-  var passwort = "Joseph Schultz"; 
-  
-  // Abfrage beim Laden der Seite
-  var eingabe = prompt("Dies ist eine private Testseite. Bitte gib das Passwort ein:");
 
-  if (eingabe !== passwort) {
-    alert("Zugriff verweigert.");
-    // Schickt den Nutzer weg, z.B. zu Google
-    window.location.href = "https://www.google.de"; 
-  }
-</script>
+    <script>
+      if (sessionStorage.getItem("rp_access") !== "true") {
+        window.location.href = "login.html";
+      }
+    </script>
+    
+    <meta name="google-site-verification" content="..." />
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schultz'sches Nachschlagewerk</title>
+    <link rel="stylesheet" href="style.css">
+
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -189,6 +189,7 @@ document.getElementById('globalSearch').addEventListener('keypress', (e) => {
 
 
 </html>
+
 
 
 
