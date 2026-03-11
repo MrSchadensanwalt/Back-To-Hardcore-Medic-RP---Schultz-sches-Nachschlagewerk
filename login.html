@@ -116,15 +116,31 @@
     </div>
 
 <script>
-    function check() {
-        var eingabe = document.getElementById("pwField").value.trim().toLowerCase();
-        if(eingabe === "preussen") {
+    async function check() {
+
+        const eingabe = document.getElementById("pwField").value.trim().toLowerCase();
+        
+
+        const geheimnis = "8d40777e38e40f1a94254462194f18376484e03746c430268ec3540e1e62aa71";
+
+
+        const msgUint8 = new TextEncoder().encode(eingabe);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const eingabeHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+        if (eingabeHash === geheimnis) {
             sessionStorage.setItem("rp_access", "true");
             window.location.href = "index.html"; 
         } else {
-            alert("Falsch! Du hast eingegeben: " + eingabe);
+            alert("Zugriff verweigert. Dr. Schultz wurde informiert.");
         }
     }
+
+
+    document.getElementById("pwField").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") { check(); }
+    });
 </script>
 </body>
 </html>
