@@ -119,10 +119,9 @@
     function check() {
         var eingabe = document.getElementById("pwField").value;
         
-
-        var geheimnis = "8344e73f8e5f7823f54508494957f88463c64c78161f32a677353f88c3a2f862";
+        // Hash für: Preussen.Schultz
+        var geheimnis = "2f8e17424b4238779906660144f77c3558197771746f3325c3413959b8764053";
         
- 
         var eingabeHash = CryptoJS.SHA256(eingabe).toString();
         
         if(eingabeHash === geheimnis) {
@@ -132,7 +131,6 @@
             alert("Zugriff verweigert. Die Kanzlei Schultz wurde informiert.");
         }
     }
-
 
     document.getElementById("pwField").addEventListener("keypress", function(e) {
         if (e.key === "Enter") { check(); }
