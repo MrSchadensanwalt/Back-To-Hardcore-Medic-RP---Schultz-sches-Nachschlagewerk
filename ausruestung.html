@@ -2,6 +2,13 @@
 <html lang="de">
 
 <head>
+<script>
+ 
+    if (sessionStorage.getItem("rp_access") !== "true") {
+ 
+        window.location.href = "login.html";
+    }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medizinische Ausrüstung - Schultz'sches Nachschlagewerk</title>
@@ -1203,6 +1210,7 @@
 
 
 </html>
+
 
 
 
