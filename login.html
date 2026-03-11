@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <script>
+      if (sessionStorage.getItem("rp_access") !== "true") {
+        window.location.href = "login.html";
+      }
+    </script>
+    
+    <meta charset="UTF-8">
+    <title>Schultz'sches Nachschlagewerk</title>
+    ```
+
+---
+
+### 2. In der neuen `login.html`
+Diese Datei ist neu, daher braucht sie das volle Programm, damit das Design (dein Gold/Schwarz-Stil) auch dort schick aussieht. 
+
+**Hier ist der komplette Code für deine `login.html` (fertig zum Kopieren):**
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schultz - Login</title>
+    <style>
+        :root {
+            --clr-primary: #c4a47c;
+            --clr-bg: #1a1a1a;
+            --clr-panel: #252525;
+        }
+        body { 
+            background: var(--clr-bg); 
+            color: var(--clr-primary); 
+            font-family: 'Georgia', serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .login-card { 
+            background: var(--clr-panel); 
+            border: 2px solid var(--clr-primary); 
+            padding: 40px; 
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border-radius: 4px;
+        }
+        h2 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+        input { 
+            background: #333; 
+            border: 1px solid var(--clr-primary); 
+            color: white; 
+            padding: 12px; 
+            width: 250px; 
+            text-align: center; 
+            margin-bottom: 20px;
+            outline: none;
+        }
+        button { 
+            background: var(--clr-primary); 
+            color: #1a1a1a; 
+            border: none; 
+            padding: 12px 30px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        button:hover { background: #e2c094; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <h2>Autorisierung</h2>
+    <p>Geben Sie das Kennwort ein, um fortzufahren:</p>
+    <input type="password" id="pwField" placeholder="Kennwort...">
+    <br>
+    <button onclick="check()">Eintreten</button>
+</div>
+
+<script>
+    function check() {
+        var val = document.getElementById("pwField").value;
+        if(val === "Joseph Schultz") { // Hier dein Passwort
+            sessionStorage.setItem("rp_access", "true");
+            window.location.href = "index.html"; // Geht zu deiner Hauptseite
+        } else {
+            alert("Zugriff verweigert!");
+        }
+    }
+
+    // Erlaubt Enter-Taste
+    document.getElementById("pwField").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") { check(); }
+    });
+</script>
+
+</body>
+</html>
