@@ -1,13 +1,5 @@
-// all_items.js
-// Diese Datei enthält alle Sucheinträge des Schultz'schen Nachschlagewerks.
-// name = Was in der Suchleiste als Vorschlag angezeigt wird
-// page = Die Zielseite
-// id = Der Suchbegriff, der an die URL angehängt wird (am besten kleingeschrieben)
-
 const allSearchItems = [
-    // ==========================================
-    // VERLETZUNGEN (Verletzungen.html)
-    // ==========================================
+
     { name: "Schussverletzung", page: "Verletzungen.html", id: "schussverletzung" },
     { name: "Schnittwunden", page: "Verletzungen.html", id: "schnittwunden" },
     { name: "Stumpfe Gewalt (Prellung, Faustschlag...)", page: "Verletzungen.html", id: "stumpfe gewalt" },
@@ -19,9 +11,7 @@ const allSearchItems = [
     { name: "Spezifische Verletzungen (Innere, Auge, Pneumothorax)", page: "Verletzungen.html", id: "spezifische verletzungen" },
     { name: "Tierbisse", page: "Verletzungen.html", id: "tierbisse" },
 
-    // ==========================================
-    // KRANKHEITEN (Krankheiten.html)
-    // ==========================================
+
     { name: "Pest", page: "Krankheiten.html", id: "pest" },
     { name: "Cholera", page: "Krankheiten.html", id: "cholera" },
     { name: "Typhus", page: "Krankheiten.html", id: "typhus" },
@@ -46,10 +36,7 @@ const allSearchItems = [
     { name: "Melancholie / Depression", page: "Krankheiten.html", id: "melancholie" },
     { name: "Wahnsinn / Epilepsie / Hysterie", page: "Krankheiten.html", id: "wahnsinn" },
 
-    // ==========================================
-    // BESCHWERDEN (Beschwerden.html) 
-    // (Hier sind auch die spezifischen Unterpunkte gelistet)
-    // ==========================================
+
     { name: "Kopfschmerzen", page: "Beschwerden.html", id: "kopfschmerzen" },
     { name: "Fieber / Schüttelfrost", page: "Beschwerden.html", id: "fieber" },
     { name: "Übelkeit / Erbrechen", page: "Beschwerden.html", id: "übelkeit" },
@@ -71,9 +58,7 @@ const allSearchItems = [
     { name: "Blutungen / innere Blutungen", page: "Beschwerden.html", id: "blutungen" },
     { name: "Schock / Bewusstlosigkeit", page: "Beschwerden.html", id: "schock" },
 
-    // ==========================================
-    // MEDIKAMENTE (Medikamente.html)
-    // ==========================================
+
     { name: "Aspirin", page: "Medikamente.html", id: "aspirin" },
     { name: "Antipyrin", page: "Medikamente.html", id: "antipyrin" },
     { name: "Phenacetin", page: "Medikamente.html", id: "phenacetin" },
@@ -122,9 +107,7 @@ const allSearchItems = [
     { name: "Arnikasalbe", page: "Medikamente.html", id: "arnikasalbe" },
     { name: "Mentholsalbe", page: "Medikamente.html", id: "mentholsalbe" },
 
-    // ==========================================
-    // AUSRÜSTUNG (ausruestung.html)
-    // ==========================================
+
     { name: "Skalpell", page: "ausruestung.html", id: "skalpell" },
     { name: "Chirurgische Messer", page: "ausruestung.html", id: "chirurgische messer" },
     { name: "Amputationsmesser", page: "ausruestung.html", id: "amputationsmesser" },
