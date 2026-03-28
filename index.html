@@ -48,47 +48,13 @@
         </div>
 
 <div class="search-container">
-    <input type="text" id="globalSearch" placeholder="Nach Verletzung oder Krankheit suchen...">
-    
-    <button class="search-btn" onclick="searchFunction()">Suchen</button>
+    <form id="search-form" style="display: flex; gap: 10px; width: 100%; position: relative;">
+        <input type="text" id="globalSearch" placeholder="Nach Verletzung oder Krankheit suchen..." autocomplete="off">
+        <button type="submit" class="search-btn">Suchen</button>
+        
+        <div id="search-suggestions" class="search-suggestions"></div>
+    </form>
 </div>
-
-<script>
-function searchFunction() {
-    const inputField = document.getElementById('globalSearch');
-    const query = inputField.value.toLowerCase().trim();
-    
-    if (!query) return;
-
-    const seiten = {
-        "Verletzungen.html": ["schuss", "schnitt", "gewalt", "gehirn", "fraktur", "bruch", "prellung", "pferd", "faust", "gelenk", "brand", "kälte", "auge", "pneumothorax", "biss"],
-        "Krankheiten.html": ["pest", "cholera", "typhus", "influenza", "tuberkulose", "tbc", "diphtherie", "masern", "husten", "grippe", "pocken", "gangrän", "syphilis", "gonorrhoe", "anämie", "malaria", "gelbsucht", "nieren", "flechte", "ekzem", "frost", "depression", "melancholie", "wahnsinn", "epilepsie", "hysterie", "wundfieber", "hepatitis", "hitzeschlag", "sonnenstich"],
-        "Beschwerden.html": ["kopf", "fieber", "übel", "erbrechen", "durchfall", "magen", "erkältung", "hals", "husten", "rücken", "schlaf", "zahn", "müde", "sehen", "eiter", "allergie", "angst", "panik", "asthma", "blutung", "schock", "bewusstlos", "nase", "atem", "karies", "hautausschlag"],
-        "Medikamente.html": ["morphin", "kokain", "laudanum", "arnika", "heroin", "codein", "chinin", "salicyl", "rizinus", "tee", "pastille", "menthol", "opium", "tonikum", "elixir", "frauengold", "fingerhut", "chloroform", "äther", "serum", "salz", "glukose", "carbol", "jod", "alkohol", "quecksilber", "senf", "tonic", "bitters", "coca", "belladonna", "zink", "wachs", "calomel", "aspirin"],
-        "ausruestung.html": ["skalpell", "messer", "lanzette", "schere", "pinzette", "klemme", "zange", "haken", "nadel", "sonde", "säge", "bohrer", "meißel", "hammer", "raspel", "verband", "mull", "baumwolle", "gaze", "gips", "schiene", "drain", "injektion", "spritze", "infusion", "stethoskop", "thermometer", "spiegel", "spatel", "lampe", "lupe"]
-    };
-
-    let zielSeite = "";
-    for (let seite in seiten) {
-        // Wir prüfen, ob eines der Schlagwörter in der Sucheingabe vorkommt
-        if (seiten[seite].some(begriff => query.includes(begriff))) {
-            zielSeite = seite;
-            break;
-        }
-    }
-
-    if (zielSeite) {
-        window.location.href = zielSeite + "?search=" + encodeURIComponent(query);
-    } else {
-        alert("Begriff nicht gefunden. Versuche es mit einem Schlagwort (z.B. Pest, Schuss oder Messser).");
-    }
-}
-
-// Enter-Taste Support (muss auch den neuen Namen aufrufen)
-document.getElementById('globalSearch').addEventListener('keypress', (e) => { 
-    if (e.key === 'Enter') searchFunction(); 
-});
-</script>
         
         <div class="container">
             <div class="panel" onclick="location.href='Verletzungen.html'">Verletzungen</div>
@@ -166,7 +132,8 @@ document.getElementById('globalSearch').addEventListener('keypress', (e) => {
             <p class="footer-contact">Kontakt Discord: mrschadensanwalt</p>
     </div>
     </footer>
-
+<script src="all_items.js"></script>
+    <script src="script.js"></script>
 </body>
 
 
