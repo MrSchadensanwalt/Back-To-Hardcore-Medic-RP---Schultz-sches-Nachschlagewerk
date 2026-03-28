@@ -416,7 +416,40 @@ h1, h2, h3, h4 {
     }
 }
 
+/* --- Suchvorschläge (Fuzzy Search) --- */
+.search-suggestions {
+    position: absolute;
+    top: calc(100% + 5px); /* Direkt unter der Leiste */
+    left: 0;
+    width: calc(100% - 130px); /* Genauso breit wie das Eingabefeld (ohne Button) */
+    background-color: var(--clr-surface-light);
+    border: 1px solid var(--clr-primary);
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 1000;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none; /* Standardmäßig versteckt */
+}
 
+.search-suggestion-item {
+    padding: 12px 1.5rem;
+    cursor: pointer;
+    color: var(--clr-text);
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--clr-divider);
+    transition: var(--transition);
+}
+
+.search-suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.search-suggestion-item:hover {
+    background-color: rgba(196, 164, 124, 0.15); /* Dezentes Gold beim Drüberfahren */
+    color: var(--clr-primary);
+}
 
 
 
