@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    // 1. Klick-Funktion für die Haupt-Akkordeons
     const items = document.querySelectorAll(".accordion-item");
     items.forEach(item => {
         const header = item.querySelector(".accordion-header");
@@ -11,28 +10,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // 2. Klick-Funktion für die Sub-Akkordeons
     const subItems = document.querySelectorAll(".sub-accordion-item");
     subItems.forEach(sub => {
         const subHeader = sub.querySelector(".sub-accordion-header");
         
         subHeader.addEventListener("click", function(e) {
-            e.stopPropagation(); // Wichtig, damit Haupt-Akkordeon offen bleibt
+            e.stopPropagation();
             toggleSubAccordion(sub);
         });
     });
 
-    // 3. Suche aus der URL verarbeiten (Wenn man von der Startseite kommt)
     applySearchQueryOnLoad();
 });
 
-// Hilfsfunktion: Haupt-Akkordeon öffnen/schließen
 function toggleMainAccordion(item) {
     const isActive = item.classList.contains("active");
     const content = item.querySelector(".accordion-content");
     const allItems = document.querySelectorAll(".accordion-item");
 
-    // Alle anderen schließen
     allItems.forEach(i => {
         i.classList.remove("active");
         const c = i.querySelector(".accordion-content");
@@ -43,7 +38,6 @@ function toggleMainAccordion(item) {
         item.classList.add("active");
         content.style.maxHeight = content.scrollHeight + "px";
         
-        // Nach Animation auf fit-content, damit Untermenüs Platz haben
         setTimeout(() => {
             if (item.classList.contains("active")) {
                 content.style.maxHeight = "fit-content";
@@ -52,7 +46,6 @@ function toggleMainAccordion(item) {
     }
 }
 
-// Hilfsfunktion: Sub-Akkordeon öffnen/schließen
 function toggleSubAccordion(sub) {
     const isActive = sub.classList.contains("active");
     const subContent = sub.querySelector(".sub-accordion-content");
@@ -68,7 +61,6 @@ function toggleSubAccordion(sub) {
     }
 }
 
-// Such-Logik beim Seitenaufruf
 function applySearchQueryOnLoad() {
     const urlParams = new URLSearchParams(window.location.search);
     const searchTerm = urlParams.get('search');
@@ -78,10 +70,9 @@ function applySearchQueryOnLoad() {
         const headers = document.querySelectorAll('.accordion-header, .sub-accordion-header');
 
         for (let header of headers) {
-            // Wir prüfen, ob die ID oder der Text zum Suchbegriff passt
+
             if (header.textContent.toLowerCase().includes(query) || header.parentElement.id === query) {
-                
-                // Falls es ein Sub-Accordion ist, erst den Vater öffnen
+
                 const parentItem = header.closest('.accordion-item');
                 if (parentItem && parentItem !== header.parentElement) {
                     parentItem.classList.add('active');
@@ -89,7 +80,6 @@ function applySearchQueryOnLoad() {
                     if (pContent) pContent.style.maxHeight = "fit-content";
                 }
 
-                // Das eigentliche Element öffnen (gleiche Logik wie beim Klick)
                 const item = header.parentElement;
                 if (item.classList.contains('accordion-item')) {
                     toggleMainAccordion(item);
@@ -97,7 +87,6 @@ function applySearchQueryOnLoad() {
                     toggleSubAccordion(item);
                 }
 
-                // Sanft dorthin scrollen
                 setTimeout(() => {
                     header.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 600);
