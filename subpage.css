@@ -1,6 +1,5 @@
 @import url('style.css');
 
-/* --- Subpage Hero --- */
 .sub-hero-container {
     position: relative;
     width: 100%;
@@ -42,7 +41,6 @@
     margin: 2rem auto;
 }
 
-/* --- Sub-navigation --- */
 .sub-nav {
     display: flex;
     justify-content: center;
@@ -51,13 +49,13 @@
     margin: 2rem 0;
     padding: 1.5rem 0;
     position: relative;
-    /* Linien oben und unten wie auf der Homepage */
+
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     background: 
         linear-gradient(90deg, transparent, var(--clr-primary), transparent) top no-repeat,
         linear-gradient(90deg, transparent, var(--clr-primary), transparent) bottom no-repeat;
-    background-size: clamp(100px, 40%, 300px) 1px; /* Gleiche Größe wie .divider auf Homepage */
+    background-size: clamp(100px, 40%, 300px) 1px; 
 }
 
 .sub-nav a {
@@ -73,17 +71,15 @@
     color: var(--clr-primary);
 }
 
-/* Handy-Anpassung für die Unterseiten-Navigation */
 @media (max-width: 768px) {
     .sub-nav {
-        flex-direction: column; /* Alles untereinander */
+        flex-direction: column; 
         align-items: center;
         gap: 1.2rem;
-        background-size: 150px 1px; /* Etwas schmalere Linien auf dem Handy */
+        background-size: 150px 1px; 
     }
 }
 
-/* --- Info Section --- */
 .info-section {
     max-width: 800px;
     margin: 6rem auto;
@@ -120,7 +116,6 @@
     font-style: italic;
 }
 
-/* --- Accordion (Resources List) --- */
 .accordion-container {
     max-width: 900px;
     margin: 4rem auto 8rem;
@@ -174,7 +169,6 @@
     padding: 1rem 2rem 2.5rem;
 }
 
-/* --- Nested Sub-accordion --- */
 .sub-accordion-item {
     margin-top: 1rem;
     border-left: 2px solid var(--clr-divider);
@@ -209,7 +203,6 @@
     transform: rotate(45deg);
 }
 
-/* --- Mobile Responsive --- */
 @media (max-width: 768px) {
     .sub-hero-container {
         min-height: 40vh;
@@ -232,4 +225,3 @@
         margin: 4rem auto;
     }
 }
-
