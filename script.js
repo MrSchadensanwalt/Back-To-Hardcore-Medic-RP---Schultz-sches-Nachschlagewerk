@@ -1,4 +1,3 @@
-// Hilfsfunktion: Erkennt Rechtschreibfehler (Levenshtein-Distanz)
 function getLevenshteinDistance(a, b) {
     if (a.length === 0) return b.length;
     if (b.length === 0) return a.length;
@@ -26,14 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const suggestionBox = document.getElementById('search-suggestions');
     const searchForm = document.getElementById('search-form');
 
-    // Weiterleitung zur passenden Seite
     function performSearch(item) {
         if (item) {
             window.location.href = `${item.page}?search=${item.id}`;
         }
     }
 
-    // Vorschläge anzeigen
     function showSuggestions(value) {
         const query = value.toLowerCase().trim();
         suggestionBox.innerHTML = ''; 
@@ -43,18 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Exakte Treffer (Wort fängt so an)
         const exactMatches = allSearchItems.filter(item => 
             item.name.toLowerCase().includes(query)
         );
 
-        // Unscharfe Treffer (Rechtschreibfehler erlaubt)
         const fuzzyMatches = allSearchItems.filter(item => 
             !exactMatches.includes(item) && 
             getLevenshteinDistance(query, item.name.toLowerCase()) <= 2
         );
 
-        const results = [...exactMatches, ...fuzzyMatches].slice(0, 6); // Max 6 Vorschläge zeigen
+        const results = [...exactMatches, ...fuzzyMatches].slice(0, 6); 
 
         if (results.length > 0) {
             results.forEach(item => {
@@ -72,12 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Wenn man tippt
     searchInput.addEventListener('input', function() {
         showSuggestions(this.value);
     });
 
-    // Wenn man Enter drückt oder auf "Suchen" klickt
     searchForm.addEventListener('submit', function(e) {
         e.preventDefault(); 
         const query = searchInput.value.toLowerCase().trim();
@@ -94,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Schließt die Box, wenn man woanders hin klickt
     document.addEventListener('click', function(e) {
         if (!searchForm.contains(e.target)) {
             suggestionBox.style.display = 'none';
