@@ -225,3 +225,15 @@
         margin: 4rem auto;
     }
 }
+
+.hero-links a, .sub-nav a {
+    margin: 0 10px !important; 
+    white-space: nowrap;
+}
+
+.panel {
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
