@@ -44,8 +44,9 @@
 .sub-nav {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
+    align-items: center;
+    flex-wrap: nowrap !important; /* Zwingt alles in eine Zeile */
+    gap: 15px !important; /* Etwas enger zusammen */
     margin: 2rem 0;
     padding: 1.5rem 0;
     position: relative;
@@ -56,15 +57,17 @@
         linear-gradient(90deg, transparent, var(--clr-primary), transparent) top no-repeat,
         linear-gradient(90deg, transparent, var(--clr-primary), transparent) bottom no-repeat;
     background-size: clamp(100px, 40%, 300px) 1px; 
+    overflow-x: auto; /* Erlaubt seitliches Wischen auf SEHR kleinen Handys */
 }
 
 .sub-nav a {
     color: var(--clr-text-muted);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.85rem !important; /* Etwas kleiner, damit alle 7 passen */
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transition: var(--transition);
+    white-space: nowrap !important; 
 }
 
 .sub-nav a:hover {
@@ -75,7 +78,7 @@
     .sub-nav {
         flex-direction: column; 
         align-items: center;
-        gap: 1.2rem;
+        gap: 1.2rem !important; 
         background-size: 150px 1px; 
     }
 }
