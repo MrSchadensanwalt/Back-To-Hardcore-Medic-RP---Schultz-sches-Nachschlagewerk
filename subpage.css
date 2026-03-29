@@ -45,8 +45,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap !important; /* Zwingt alles in eine Zeile */
-    gap: 15px !important; /* Etwas enger zusammen */
+    flex-wrap: nowrap !important; 
+    gap: 15px !important; 
     margin: 2rem 0;
     padding: 1.5rem 0;
     position: relative;
@@ -57,13 +57,13 @@
         linear-gradient(90deg, transparent, var(--clr-primary), transparent) top no-repeat,
         linear-gradient(90deg, transparent, var(--clr-primary), transparent) bottom no-repeat;
     background-size: clamp(100px, 40%, 300px) 1px; 
-    overflow-x: auto; /* Erlaubt seitliches Wischen auf SEHR kleinen Handys */
+    overflow-x: auto; 
 }
 
 .sub-nav a {
     color: var(--clr-text-muted);
     text-decoration: none;
-    font-size: 0.85rem !important; /* Etwas kleiner, damit alle 7 passen */
+    font-size: 0.85rem !important; 
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transition: var(--transition);
