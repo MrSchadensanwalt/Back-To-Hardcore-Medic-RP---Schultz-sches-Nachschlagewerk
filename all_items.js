@@ -161,7 +161,7 @@ const allSearchItems = [
     { name: "Ohrenspiegel", page: "ausruestung.html", id: "ohrenspiegel" },
     { name: "Zungenspatel", page: "ausruestung.html", id: "zungenspatel" },
     { name: "Untersuchungslampen", page: "ausruestung.html", id: "untersuchung" },
-    { name: "Lupen", page: "ausruestung.html", id: "lupen" }
+    { name: "Lupen", page: "ausruestung.html", id: "lupen" }, 
 
     
     { name: "Schafgarbe (Yarrow)", page: "Pflanzen.html", id: "schafgarbe" },
